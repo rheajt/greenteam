@@ -1,21 +1,50 @@
 import React from "react"
 import { Link } from "gatsby"
-
-import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import styled from "styled-components"
+
+const Header = styled.header`
+  .img {
+    width: 400px;
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    li {
+      display: inline-block;
+      padding: 2rem;
+      border: 1px solid grey;
+    }
+  }
+`
 
 const IndexPage = () => (
-  <Layout>
+  <>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
+
+    <Header>
+      <div className="img">
+        <Image />
+      </div>
+
+      <nav>
+        <ul>
+          <li>home</li>
+          <li>about</li>
+          <li>events</li>
+        </ul>
+      </nav>
+    </Header>
     <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
+  </>
 )
 
 export default IndexPage
