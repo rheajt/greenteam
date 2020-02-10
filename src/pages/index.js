@@ -1,50 +1,41 @@
-import React from "react"
-import { Link } from "gatsby"
-import Image from "../components/image"
-import SEO from "../components/seo"
-import styled from "styled-components"
+import React from 'react';
+import Image from '../components/image';
+import SEO from '../components/seo';
+import styled from 'styled-components';
+import brickWall from '../images/brickwall_@2X.png';
+import { createGlobalStyle } from 'styled-components';
 
-const Header = styled.header`
-  .img {
-    width: 400px;
-    height: auto;
-    text-align: center;
-    margin: 0 auto;
-  }
-  ul {
-    list-style: none;
-    margin: 0;
+const GlobalStyle = createGlobalStyle`
+  body {
     padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    text-align: center;
-    li {
-      display: inline-block;
-      padding: 2rem;
-      border: 1px solid grey;
-    }
+    margin: 0;
+    min-height: 100vh;
+    background-image: url(${brickWall});
   }
-`
+`;
+
+const Container = styled.main`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgba(20, 0, 0, 0.6);
+  /* background-color: rgba(50, 67, 29, 0.792); */
+
+  .img {
+    width: 800px;
+    filter: drop-shadow(2px 4px 6px black);
+  }
+`;
 
 const IndexPage = () => (
-  <>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+  <Container>
+    <SEO title="Green Team" keywords={[`gatsby`, `application`, `react`]} />
+    <GlobalStyle />
+    <div className="img">
+      <Image />
+    </div>
+  </Container>
+);
 
-    <Header>
-      <div className="img">
-        <Image />
-      </div>
-
-      <nav>
-        <ul>
-          <li>home</li>
-          <li>about</li>
-          <li>events</li>
-        </ul>
-      </nav>
-    </Header>
-    <Link to="/page-2/">Go to page 2</Link>
-  </>
-)
-
-export default IndexPage
+export default IndexPage;
